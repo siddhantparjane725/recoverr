@@ -85,3 +85,50 @@ For every failed transaction, RecoverR:
                   ┌─────────────┐
                   │    AUDIT    │
                   └─────────────┘
+🏗️ Project Structure
+recoverr/
+│
+├── backend/
+│   ├── agents/
+│   │   ├── detector.py
+│   │   ├── diagnosis.py
+│   │   ├── decision.py
+│   │   └── recovery.py
+│   │
+│   ├── models/
+│   │   └── schemas.py
+│   │
+│   ├── policies/
+│   │   └── guardrails.py
+│   │
+│   ├── services/
+│   │   ├── ml_predictor.py
+│   │   └── recovery_service.py
+│   │
+│   ├── tools/
+│   │   ├── payment_tool.py
+│   │   └── notification_tool.py
+│   │
+│   └── main.py
+│
+├── frontend/
+│   └── app.py
+│
+├── data/
+│   ├── generate_transactions.py
+│   └── transactions.csv
+│
+├── evaluation/
+│   ├── batch_recovery.py
+│   ├── baseline_comparison.py
+│   ├── optimize_policy.py
+│   └── results/
+│
+├── tests/
+│
+├── docs/
+│   └── architecture.md
+│
+├── .gitignore
+├── README.md
+└── requirements.txt
