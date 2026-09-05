@@ -132,3 +132,116 @@ recoverr/
 ├── .gitignore
 ├── README.md
 └── requirements.txt
+🚀 Running Locally
+1. Clone the repository
+git clone https://github.com/siddhantparjane725/recoverr.git
+cd recoverr
+2. Install dependencies
+pip install -r requirements.txt
+3. Start the backend
+python -m uvicorn backend.main:app
+
+Backend:
+
+http://127.0.0.1:8000
+
+API documentation:
+
+http://127.0.0.1:8000/docs
+4. Start the dashboard
+
+Open another terminal:
+
+python -m streamlit run frontend/app.py
+🔌 API Example
+POST /recover
+
+Example request:
+
+{
+  "transaction_id": "TXN_DEMO_001",
+  "customer_id": "CUST_001",
+  "amount": 1500,
+  "payment_method": "card",
+  "bank": "HDFC",
+  "status": "failed",
+  "failure_reason": "bank_timeout",
+  "retry_count": 0,
+  "previous_transactions": 10,
+  "previous_successful_transactions": 8,
+  "risk_score": 0.2
+}
+
+The API returns:
+
+Recovery decision
+Recovery probability
+Expected recovery value
+Selected action
+Execution result
+Verification result
+Agent pipeline
+🎯 Design Principles
+1. Recover selectively
+
+Not every failed payment should be retried.
+
+2. Predict before acting
+
+The ML model estimates recovery probability before the agent acts.
+
+3. Guard every action
+
+Deterministic policies constrain autonomous actions.
+
+4. Verify outcomes
+
+The agent does not assume that an attempted recovery succeeded.
+
+5. Audit everything
+
+Every action produces an auditable record.
+
+6. Fail safely
+
+When confidence is insufficient or a policy is violated, the agent stops or escalates.
+
+🔮 Production Roadmap
+
+The current implementation is a buildathon prototype using synthetic data and simulated payment/notification tools.
+
+A production version could integrate:
+
+Real payment provider APIs
+Webhooks for payment status updates
+Merchant-specific recovery policies
+Real transaction history
+Customer communication channels
+Real-time event processing
+Online model monitoring
+Model drift detection
+Human approval workflows
+Merchant analytics
+🏆 Buildathon Focus
+
+RecoverR demonstrates the complete revenue recovery loop:
+
+DETECT
+  ↓
+DIAGNOSE
+  ↓
+PREDICT
+  ↓
+DECIDE
+  ↓
+GUARDRAIL
+  ↓
+EXECUTE
+  ↓
+VERIFY
+  ↓
+AUDIT
+
+The key idea is simple:
+
+Don't just report lost revenue. Recover it safely.
